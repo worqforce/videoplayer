@@ -16,9 +16,6 @@ def status(stext):
     openedfile.close()
 
 def generatevideopage():
-    if os.path.isfile("./server/videoplayercache/setup.html"):
-        os.system("rm ./server.html")
-        os.system("cp ./server/videoplayercache/setup.html ./setup.html")
     status("Generating video Page...")
     os.system("rm -rf ./video/.DS_Store")
     os.system("rm -r ./videohtml")
@@ -83,11 +80,10 @@ Your browser does not support SONX.>
         if index == numdircontent:
             break
     
-    os.system("cp ./setup.html ./server/videoplayercache/setup.html")
-    setupfile=open("./setup.html", "r")
+    setupfile=open("./plugins.html", "r")
     setupfilecont=setupfile.read()
     setupfile.close()
-    setupfile=open("./setup.html", "w+")
+    setupfile=open("./plugins.html", "w+")
     setupfile.write(setupfilecont)
     setupfile.write("""\n
     <a href="./video.html"><h1>Your Videos</h1></a>""")
@@ -100,7 +96,8 @@ Your browser does not support SONX.>
 <body>
 <link rel="stylesheet" href="./ui/css/index.css">
 <title>SONX</title>
-    <a href="./index.html"><div class="menu"><img alt="Home" src="./ui/sonx.png" width=100" height="70"></img></div></a>
+<a href="./index.html"><div class="menu"><img alt="Home" src="./ui/sonx.png" width=100" height="70"></img></div></a>
+    <a href="./plugins.html"><div class="plug"><img alt="Plugins" src="./ui/plugins.png" width=100" height="70"></img></div></a>
     <a href="./support.html"><div class="sup"><img alt="Support SONX" src="./ui/support.png" width=100" height="70"></img></div></a>
     <a href="./setup.html"><div class="set"><img alt="Setup" src="./ui/setup.png" width=100" height="70"></img></div></a>
     <a href="./about.html"><div class="abb"><img alt="About" src="./ui/about.png" width=100" height="70"></img></div></a>
