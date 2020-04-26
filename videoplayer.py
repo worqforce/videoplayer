@@ -1,6 +1,19 @@
 print("Loading plugin videoplayer.py...")
 import os
 from tkinter import *
+import time
+
+print("Waiting for other scripts...")
+time.sleep(5)
+print("Injecting Your Videos in plugins.html")
+setupfile=open("./plugins.html", "r")
+setupfilecont=setupfile.read()
+setupfile.close()
+setupfile=open("./plugins.html", "w+")
+setupfile.write(setupfilecont)
+setupfile.write("""\n
+<a href="./video.html"><h1>Your Videos</h1></a>""")
+setupfile.close()
 
 print("Starting videoplayer")
 if not os.path.isdir("./video/"):
@@ -80,14 +93,6 @@ Your browser does not support SONX.>
         if index == numdircontent:
             break
     
-    setupfile=open("./plugins.html", "r")
-    setupfilecont=setupfile.read()
-    setupfile.close()
-    setupfile=open("./plugins.html", "w+")
-    setupfile.write(setupfilecont)
-    setupfile.write("""\n
-    <a href="./video.html"><h1>Your Videos</h1></a>""")
-    setupfile.close()
     videopage=open("./video.html", "w+")
     videopage.write("""<head>
     <link rel="stylesheet" href="./ui/css/index.css">
